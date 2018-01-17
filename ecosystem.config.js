@@ -8,6 +8,7 @@ module.exports = {
         {
             name: "server",
             script: "server.js",
+            "exec_interpreter": "babel-node",
             env: {
                 COMMON_VARIABLE: "true"
             },
@@ -36,6 +37,7 @@ module.exports = {
             "post-deploy": "npm install && npm run reload:prod"
         },
         dev: {
+            key: "~/.ssh/id_rsa",
             user: "root",
             host: "192.168.9.26",
             ref: "origin/master",

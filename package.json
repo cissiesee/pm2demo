@@ -12,12 +12,16 @@
         "monit": "pm2 monit",
         "generconfig": "pm2 ecosystem",
         "deploy": "pm2 deploy ecosystem.config.js production setup",
-        "remote-run": "pm2 deploy ecosystem.config.js production"
+        "start:remote": "pm2 deploy ecosystem.config.js production",
+        "stop:remote": "pm2 deploy production exec \"npm stop\""
     },
     "dependencies": {
         "express": "^4.16.2"
     },
     "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-stage-0": "^6.24.1",
         "pm2": "^2.9.1"
     }
 }
