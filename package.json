@@ -2,14 +2,17 @@
     "name": "docker_web_app",
     "version": "1.0.0",
     "description": "Node.js on Docker",
-    "author": "First Last <first.last@example.com>",
+    "author": "huangzt <huangzt@linkstec.com>",
     "main": "server.js",
     "scripts": {
-        "start": "pm2 start processes.json --watch",
-        "restart": "pm2 reload processes.json",
+        "start": "pm2 start ecosystem.config.js --watch",
+        "reload": "pm2 reload ecosystem.config.js",
+        "reload:prod": "pm2 reload ecosystem.config.js --env production",
         "stop": "pm2 stop all",
         "monit": "pm2 monit",
-        "generconfig": "pm2 ecosystem"
+        "generconfig": "pm2 ecosystem",
+        "deploy": "pm2 deploy ecosystem.config.js production setup",
+        "remote-run": "pm2 deploy ecosystem.config.js production"
     },
     "dependencies": {
         "express": "^4.16.2"
