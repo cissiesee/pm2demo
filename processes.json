@@ -1,0 +1,12 @@
+{
+    "apps": [
+        {
+            "script": "server.js",
+            "instances": 0,
+            "exec_mode": "cluster"
+        }
+    ],
+    "ignore_watch": [
+        "node_modules"
+    ]
+}
