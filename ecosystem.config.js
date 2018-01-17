@@ -8,6 +8,7 @@ module.exports = {
         {
             name: "server",
             script: "server.js",
+            "node_args": "--harmony",
             "exec_interpreter": "babel-node",
             env: {
                 COMMON_VARIABLE: "true"
