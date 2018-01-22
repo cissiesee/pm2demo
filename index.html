@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>WebSocket demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font: 13px Helvetica, Arial;
+        }
+
+        form {
+            background: #000;
+            padding: 3px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        form input {
+            border: 0;
+            padding: 10px;
+            width: 90%;
+            margin-right: .5%;
+        }
+
+        form button {
+            width: 9%;
+            background: rgb(130, 224, 255);
+            border: none;
+            padding: 10px;
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #messages li {
+            padding: 5px 10px;
+        }
+
+        #messages li:nth-child(odd) {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="messages"></ul>
+    <button class="begin">开启长连接</button>
+    <form action="">
+        <input id="m" autocomplete="off" value="test" /><button>Send</button>
+    </form>
+    <!--<script src="/socket.io/socket.io.js"></script>-->
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        let search = window.location.search;
+        console.log(search + " is ready");
+        setTimeout(function () {
+            var ws = new WebSocket("ws://localhost:8080");
+            ws.onopen = function (e) {
+                console.log(search + ', Connection to server opened');
+            }
+            ws.onmessage = function (event) {
+                console.log(search + ', msg from server:' + event.data);
+            }
+            ws.onerror = function (event) {
+                console.log(search + ', error:' + event.data);
+            }
+            ws.onclose = function (event) {
+                console.log(search + ', close:' + event.data);
+            }
+            // function sendMessage() {
+            //     ws.send($('#message').val());
+            // }
+            // var socket = io();
+            // socket.on('connect', function () {
+            //     console.log(search + ", connect");
+            // });
+            // socket.on('feedback', function (data) {
+            //     console.log(search + ", feedback: " + data);
+            // });
+            // socket.on('disconnect', function () {
+            //     console.log(search + ", disconnect" + data);
+            // });
+            // setTimeout(() => {
+            //     ws.send($('#m').val());
+            //     $('#m').val('');
+            // }, 1000);
+            $('form').submit(function () {
+                //socket.emit('chat message', $('#m').val());
+                ws.send($('#m').val());
+                $('#m').val('');
+                return false;
+            });
+        }, 2000);
+    </script>
+</body>
+
+</html>

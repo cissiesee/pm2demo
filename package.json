@@ -16,7 +16,8 @@
         "stop:remote": "pm2 deploy production exec \"npm stop\""
     },
     "dependencies": {
-        "express": "^4.16.2"
+        "express": "^4.16.2",
+        "ws": "^4.0.0"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",
