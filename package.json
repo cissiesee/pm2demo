@@ -8,12 +8,14 @@
         "start": "pm2 start ecosystem.config.js --watch",
         "reload": "pm2 reload ecosystem.config.js",
         "reload:prod": "pm2 reload ecosystem.config.js --env production",
+        "logs": "pm2 logs",
         "stop": "pm2 stop all",
         "monit": "pm2 monit",
         "generconfig": "pm2 ecosystem",
         "deploy": "pm2 deploy ecosystem.config.js production setup",
         "start:remote": "pm2 deploy ecosystem.config.js production",
-        "stop:remote": "pm2 deploy production exec \"npm stop\""
+        "stop:remote": "pm2 deploy production exec \"npm stop\"",
+        "logs:remote": "pm2 deploy production exec \"npm run logs\""
     },
     "dependencies": {
         "express": "^4.16.2",
