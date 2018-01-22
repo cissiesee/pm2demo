@@ -64,7 +64,7 @@
         let search = window.location.search;
         console.log(search + " is ready");
         setTimeout(function () {
-            var ws = new WebSocket("ws://localhost:8080");
+            var ws = new WebSocket("ws://192.168.9.26:8080");
             ws.onopen = function (e) {
                 console.log(search + ', Connection to server opened');
             }
